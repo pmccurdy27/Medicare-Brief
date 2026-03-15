@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Medicare Brief — Full Policy Detail</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628; --cobalt: #1a3a6b; --red: #c8102e;
+    --gold: #b8942a; --cream: #f5f0e8; --light: #e8e2d4;
+    --white: #ffffff; --green: #1a5c32;
+  }
+  body { background: var(--cream); font-family: 'IBM Plex Sans', sans-serif; color: #1a1a1a; line-height: 1.7; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 999;
+    background: var(--navy); border-bottom: 3px solid var(--gold);
+    padding: 0 2rem; display: flex; align-items: center; gap: 0;
+    overflow-x: auto; white-space: nowrap;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900;
+    color: var(--white); padding: 0.75rem 1.5rem 0.75rem 0; border-right: 1px solid rgba(255,255,255,0.15);
+    margin-right: 0.5rem; flex-shrink: 0;
+  }
+  .nav-brand span { color: var(--gold); }
+  nav a {
+    color: rgba(255,255,255,0.65); text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.75rem 0.75rem; transition: color 0.15s;
+    flex-shrink: 0;
+  }
+  nav a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy); padding: 4rem 2rem 3rem;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+    color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900; color: var(--white); line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+    color: rgba(255,255,255,0.6); letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-quote {
+    max-width: 680px; margin: 0 auto;
+    border-left: 3px solid var(--gold); padding: 0.75rem 1.25rem;
+    background: rgba(184,148,42,0.1); text-align: left;
+  }
+  .hero-quote p {
+    font-family: 'Playfair Display', serif; font-size: 1.1rem;
+    font-style: italic; color: var(--white); line-height: 1.5;
+  }
+  .hero-meta {
+    display: flex; justify-content: center; gap: 2rem;
+    margin-top: 1.5rem; flex-wrap: wrap;
+  }
+  .hero-meta-item { text-align: center; }
+  .hero-meta-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
+    color: rgba(255,255,255,0.4); letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .hero-meta-value {
+    font-family: 'IBM Plex Sans', sans-serif; font-size: 0.85rem;
+    color: var(--white); font-weight: 500;
+  }
+  .status-badge {
+    display: inline-block; background: var(--red); color: white;
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px;
+    margin-top: 4px;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ── SECTIONS ── */
+  .policy-section {
+    padding: 3.5rem 0; border-bottom: 1px solid rgba(26,58,107,0.15);
+  }
+  .policy-section:last-child { border-bottom: none; }
+
+  .section-eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--red);
+    border-bottom: 1.5px solid var(--red); padding-bottom: 4px;
+    margin-bottom: 0.75rem; display: inline-block;
+  }
+  .section-eyebrow::before { content: '■ '; font-size: 0.55rem; }
+
+  h2 {
+    font-family: 'Playfair Display', serif; font-size: 1.9rem;
+    font-weight: 700; color: var(--navy); line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem;
+    font-weight: 600; color: var(--cobalt); margin: 1.5rem 0 0.5rem;
+  }
+  p { font-size: 0.95rem; color: #2a2a2a; margin-bottom: 0.75rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── STAT BOX ── */
+  .stat-box {
+    background: var(--navy); padding: 1rem 1.25rem;
+    display: flex; align-items: center; gap: 1rem; margin: 1.25rem 0;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif; font-size: 2.5rem;
+    font-weight: 900; color: var(--gold); line-height: 1; white-space: nowrap;
+  }
+  .stat-desc { font-size: 0.85rem; color: var(--light); line-height: 1.5; }
+  .stat-desc span { color: var(--gold); font-size: 0.75rem; }
+
+  /* ── RULE BOX ── */
+  .rule-box { background: var(--navy); padding: 1rem 1.25rem; margin: 1.25rem 0; }
+  .rule-title {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+    color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem;
+  }
+  .rule-item { display: flex; gap: 0.6rem; margin-bottom: 0.5rem; align-items: flex-start; }
+  .rule-item:last-child { margin-bottom: 0; }
+  .rule-bullet { color: var(--red); font-size: 0.9rem; flex-shrink: 0; margin-top: 2px; }
+  .rule-text { font-size: 0.85rem; color: var(--light); line-height: 1.5; }
+  .rule-text .key { color: var(--gold); font-weight: 600; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-left: 4px solid var(--gold); padding: 0.75rem 1rem;
+    margin: 1.25rem 0; background: rgba(184,148,42,0.07);
+  }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-style: italic; color: var(--navy); font-size: 1rem; }
+  .pull-quote cite { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: #777; display: block; margin-top: 6px; }
+
+  /* ── BENEFIT GROUPS ── */
+  .benefit-group {
+    border-left: 3px solid var(--cobalt); padding: 0.6rem 1rem;
+    background: rgba(26,58,107,0.06); margin-bottom: 0.5rem;
+  }
+  .benefit-group.excluded { border-color: var(--red); background: rgba(200,16,46,0.05); }
+  .benefit-group-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem;
+    color: var(--cobalt); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 3px;
+  }
+  .benefit-group.excluded .benefit-group-label { color: var(--red); }
+  .benefit-group-items { font-size: 0.88rem; color: #333; line-height: 1.5; }
+  .benefit-group.excluded .benefit-group-items { text-decoration: line-through; color: #777; }
+
+  /* ── CS TABLE ── */
+  .cs-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .cs-table th {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--white);
+    background: var(--cobalt); padding: 8px 10px; text-align: left;
+  }
+  .cs-table td { font-size: 0.88rem; padding: 7px 10px; border-bottom: 0.5px solid #d4cdc0; }
+  .cs-table tr:nth-child(even) td { background: rgba(26,58,107,0.04); }
+  .none-tag { color: var(--green); font-weight: 600; }
+  .sliding-tag { color: var(--cobalt); font-weight: 600; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; margin: 1.25rem 0; padding-left: 1.5rem; }
+  .timeline::before { content: ''; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: var(--cobalt); opacity: 0.3; }
+  .tl-item { position: relative; margin-bottom: 1.25rem; }
+  .tl-item::before { content: ''; position: absolute; left: -1.1rem; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--red); border: 2px solid var(--cream); box-shadow: 0 0 0 1.5px var(--red); }
+  .tl-phase { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 500; color: var(--red); letter-spacing: 0.05em; margin-bottom: 3px; }
+  .tl-text { font-size: 0.88rem; color: #333; line-height: 1.5; }
+
+  /* ── ND ITEMS ── */
+  .nd-item { display: flex; gap: 0.75rem; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 0.5px solid #d8d0c4; align-items: flex-start; }
+  .nd-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .nd-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .nd-title { font-size: 0.92rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .nd-text { font-size: 0.85rem; color: #444; line-height: 1.55; }
+  .nd-source { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--gold); margin-top: 5px; }
+
+  /* ── TRANSPORT BOX ── */
+  .transport-box { background: rgba(26,58,107,0.1); border-left: 3px solid var(--cobalt); padding: 0.75rem 1rem; margin: 1rem 0; }
+  .tb-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--cobalt); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  .tb-text { font-size: 0.85rem; color: #333; line-height: 1.5; }
+
+  /* ── OPINION TABLE ── */
+  .opinion-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .opinion-table th { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; background: var(--cobalt); color: white; padding: 8px 10px; text-align: left; }
+  .opinion-table td { font-size: 0.88rem; padding: 7px 10px; border-bottom: 0.5px solid #d4cdc0; }
+  .opinion-table tr:nth-child(even) td { background: rgba(26,58,107,0.04); }
+  .support { color: var(--green); font-weight: 600; }
+  .oppose  { color: var(--red); font-weight: 600; }
+
+  /* ── BULLET ITEMS ── */
+  .bullet-item { display: flex; gap: 0.6rem; margin-bottom: 0.75rem; align-items: flex-start; }
+  .bullet-dot { background: var(--cobalt); color: white; font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; padding: 2px 6px; flex-shrink: 0; margin-top: 3px; }
+  .bullet-dot.red { background: var(--red); }
+  .bullet-text { font-size: 0.88rem; color: #333; line-height: 1.55; }
+
+  /* ── ACO STEPS ── */
+  .aco-step { display: flex; gap: 0.6rem; margin-bottom: 0.75rem; align-items: flex-start; }
+  .aco-num { background: var(--red); color: white; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; padding: 2px 7px; flex-shrink: 0; margin-top: 3px; }
+  .aco-text { font-size: 0.88rem; color: #333; line-height: 1.55; }
+
+  /* ── CHIP ── */
+  .chip { background: var(--gold); color: var(--navy); font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; padding: 2px 6px; font-weight: 600; }
+  .chip.red { background: var(--red); color: white; }
+
+  /* ── SOURCE ── */
+  .source-note { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: #999; margin-top: 8px; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); padding: 2rem; text-align: center; border-top: 2px solid var(--gold); }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 900; color: white; }
+  .footer-logo span { color: var(--gold); }
+  .footer-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    h2 { font-size: 1.5rem; }
+    .stat-number { font-size: 2rem; }
+    nav a { font-size: 0.6rem; padding: 0.75rem 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">The Medicare <span>Brief</span></div>
+  <a href="#coverage">Coverage</a>
+  <a href="#benefits">Benefits</a>
+  <a href="#cost">Cost</a>
+  <a href="#cost-sharing">Cost Sharing</a>
+  <a href="#enrollment">Enrollment</a>
+  <a href="#nondiscrim">Non-Discrimination</a>
+  <a href="#feasibility">Feasibility</a>
+  <a href="#acos">ACOs</a>
+  <a href="#regional">Regional Admin</a>
+  <a href="#opinion">Public Opinion</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Congressional Staff Policy Education · 119th Congress · Full Policy Detail</div>
+  <h1>The Medicare <span>Brief</span></h1>
+  <div class="hero-sub">Medicare for America Act — Comprehensive Policy Overview</div>
+  <div class="hero-quote">
+    <p>"Guaranteed coverage for every legal U.S. resident — universal, comprehensive, and non-discriminatory from Day One."</p>
+  </div>
+  <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Bill</div>
+        <div class="hero-meta-value">Medicare for America Act</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Session</div>
+        <div class="hero-meta-value">119th Congress, 1st Session</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Year</div>
+        <div class="hero-meta-value">2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Prepared by</div>
+        <div class="hero-meta-value">Paige McCurdy &amp; Ella Philander</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Status</div>
+        <div class="hero-meta-value"><span class="status-badge">Under Construction</span></div>
+      </div>
+    </div>
+  </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Session</div>
+      <div class="hero-meta-value">119th Congress, 1st Session</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Year</div>
+      <div class="hero-meta-value">2026</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Status</div>
+      <div class="hero-meta-value"><span class="status-badge">Under Construction</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- ── UNIVERSAL COVERAGE ── -->
+  <section class="policy-section" id="coverage">
+    <div class="section-eyebrow">Universal Coverage</div>
+    <h2>Who Is Covered?</h2>
+    <p>This bill extends Medicare to <strong>all lawful U.S. residents</strong> — regardless of age, employment, or income. Enrollment is automatic; no application required.</p>
+
+    <div class="stat-box">
+      <div class="stat-number">336M+</div>
+      <div class="stat-desc">Legal U.S. residents eligible<br><span>Including currently uninsured (~27.2M Americans)</span></div>
+    </div>
+    <p class="source-note">Sources: U.S. Census Bureau, Health Insurance Coverage in the United States: 2024; CDC/NCHS, National Health Interview Survey, 2024</p>
+
+    <div class="rule-box">
+      <div class="rule-title">Private Insurance</div>
+      <div class="rule-item">
+        <div class="rule-bullet">◆</div>
+        <div class="rule-text">Individuals <span class="key">may retain</span> private insurance alongside Medicare coverage.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-bullet">◆</div>
+        <div class="rule-text">Providers may contract with private insurers and Medicare.</div>
+      </div>
+    </div>
+
+    <h3>45% Gross Receipts Rule</h3>
+    <p>Private insurers are <strong>not eligible for Medicare payments</strong> unless at least <strong>45% of their gross receipts</strong> come from Medicare — preventing public funds from subsidizing primarily private-market insurers. This applies to all providers including hospitals, physician groups, and all other entities.</p>
+    <p>This threshold ensures insurers remain substantially committed to the public program — not treating Medicare as a marginal revenue supplement. Insurers can't cherry-pick Medicare payments while primarily serving lucrative private markets.</p>
+  </section>
+
+  <!-- ── BENEFITS ── -->
+  <section class="policy-section" id="benefits">
+    <div class="section-eyebrow">Benefits Package</div>
+    <h2>What Does It Cover?</h2>
+    <p>A <strong>comprehensive benefit package</strong> exceeding current Medicare and most private plans — with no cost-sharing at point of service for covered benefits.</p>
+
+    <div class="benefit-group">
+      <div class="benefit-group-label">Clinical</div>
+      <div class="benefit-group-items">Hospital &amp; Inpatient · Primary Care · Outpatient / Specialty · Preventive Care · Pharmaceuticals</div>
+    </div>
+    <div class="benefit-group">
+      <div class="benefit-group-label">Behavioral Health</div>
+      <div class="benefit-group-items">Mental Health · Substance Use Disorder — both require a GP referral. OB/GYN is classified as <strong>primary care</strong> — no referral needed, removing a key equity barrier for women.</div>
+    </div>
+    <div class="benefit-group">
+      <div class="benefit-group-label">Sensory &amp; Dental</div>
+      <div class="benefit-group-items">Dental · Vision · Hearing</div>
+    </div>
+    <div class="benefit-group">
+      <div class="benefit-group-label">Reproductive &amp; Family</div>
+      <div class="benefit-group-items">Maternity &amp; Newborn · Reproductive Health · OB/GYN as Primary Care (no referral required)</div>
+    </div>
+    <div class="benefit-group">
+      <div class="benefit-group-label">Long-Term &amp; Community</div>
+      <div class="benefit-group-items">Long-Term Care (priority given to home/community-based) · Medicaid Transportation (required coverage for non-emergency medical transport)</div>
+    </div>
+    <div class="benefit-group excluded">
+      <div class="benefit-group-label">Excluded</div>
+      <div class="benefit-group-items">Assistive Reproductive Technology (ART / IVF)</div>
+    </div>
+
+    <div class="pull-quote">
+      <p>"Coverage without access is not coverage. Transportation is a social determinant of health, not a luxury."</p>
+      <cite>— Embedded Medicaid Transportation Provision</cite>
+    </div>
+  </section>
+
+  <!-- ── COST ── -->
+  <section class="policy-section" id="cost">
+    <div class="section-eyebrow">Cost</div>
+    <h2>Funding Mechanism</h2>
+    <p>The U.S. already spends <strong>$5.3 trillion</strong> on health care annually — <strong>$15,474 per person</strong>, nearly <strong>double</strong> what peer nations spend per capita. The debate is not about whether we spend enough, but whether we spend it efficiently.</p>
+
+    <div class="stat-box">
+      <div class="stat-number">$5.3T</div>
+      <div class="stat-desc">U.S. total health spending, 2024<br><span>CMS National Health Expenditure Accounts · 2024</span></div>
+    </div>
+
+    <p>The U.S. spends <strong>~$5,000 more per person</strong> than Switzerland, the next highest-spending peer nation. The CBO projects ~$400B/year in administrative savings by reducing private insurer overhead (~12%) to Medicare's level (~2%).</p>
+
+    <h3>Proposed Enhancements to Medicare Funding</h3>
+
+    <div class="bullet-item">
+      <div class="bullet-dot red">1</div>
+      <div class="bullet-text"><strong>Income-Based Tax (MAGI):</strong> Individuals pay a percentage of Modified Adjusted Gross Income — capturing all income sources, not only wages. This means additional contributions apply if you have income beyond employment (investments, rental income, etc.).</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot red">2</div>
+      <div class="bullet-text"><strong>Organizational Gross Income Contribution:</strong> All private and public organizations contribute a TBD% of gross income, subject to a minimum income threshold. Both private and public organizations are included.</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot red">3</div>
+      <div class="bullet-text"><strong>Employee-Count Surcharge:</strong> Companies pay an additional contribution based on number of employees — removing the financial incentive to hire part-time or low-wage workers. Note: ~64% of Medicaid-covered individuals are employed, making employer accountability central to equitable financing.</div>
+    </div>
+
+    <div class="pull-quote">
+      <p>"Federal spending could increase while national health spending decreases, if a federal program takes over private spending and does it at lower cost."</p>
+      <cite>— Urban Institute, Health Spending Analysis</cite>
+    </div>
+  </section>
+
+  <!-- ── COST SHARING ── -->
+  <section class="policy-section" id="cost-sharing">
+    <div class="section-eyebrow">Cost Sharing</div>
+    <h2>What Do Enrollees Pay?</h2>
+    <p>No premiums or deductibles for anyone. Cost-sharing applies only on <em>unreferred specialist visits</em>, calculated on an income-based sliding scale.</p>
+
+    <table class="cs-table">
+      <thead>
+        <tr><th>Service Type</th><th>Premium</th><th>Deductible</th><th>Copay</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Primary Care (incl. OB/GYN)</td><td><span class="none-tag">None</span></td><td><span class="none-tag">None</span></td><td><span class="none-tag">None</span></td></tr>
+        <tr><td>Specialist — with GP referral</td><td><span class="none-tag">None</span></td><td><span class="none-tag">None</span></td><td><span class="none-tag">None</span></td></tr>
+        <tr><td>Specialist — no GP referral</td><td><span class="none-tag">None</span></td><td><span class="sliding-tag">Income-Based</span></td><td><span class="sliding-tag">Sliding Scale</span></td></tr>
+        <tr><td>Mental Health / SUD (with referral)</td><td><span class="none-tag">None</span></td><td><span class="none-tag">None</span></td><td><span class="none-tag">None</span></td></tr>
+        <tr><td>Pharma / Dental / Vision</td><td><span class="none-tag">None</span></td><td><span class="none-tag">None</span></td><td><span class="sliding-tag">When Applicable</span></td></tr>
+      </tbody>
+    </table>
+
+    <p><span class="chip red">Exceptions Exist</span></p>
+
+    <h3>Cost by Income Group</h3>
+    <p>Under proposed financing structures, lower- and middle-income households see net savings. Higher earners contribute more through progressive taxation.</p>
+    <table class="opinion-table">
+      <tr><th>Household Income</th><th>Net Impact</th></tr>
+      <tr><td>Under $30K</td><td><span class="support">▼ Est. savings ~$2,600/yr</span></td></tr>
+      <tr><td>$30K – $60K</td><td><span class="support">▼ Est. savings ~$3,400/yr</span></td></tr>
+      <tr><td>$60K – $100K</td><td><span class="support">▼ Est. savings ~$3,100/yr</span></td></tr>
+      <tr><td>$100K – $200K</td><td><span class="support">▼ Est. savings ~$1,200/yr</span></td></tr>
+      <tr><td>$200K – $400K</td><td><span class="oppose">▲ Est. +$4,600/yr</span></td></tr>
+      <tr><td>$400K+</td><td><span class="oppose">▲ Significant increase</span></td></tr>
+    </table>
+    <p class="source-note">Source: PERI/UMass modeling; CBO projections. Actual impact varies by state, family size, and current coverage type.</p>
+  </section>
+
+  <!-- ── ENROLLMENT ── -->
+  <section class="policy-section" id="enrollment">
+    <div class="section-eyebrow">Enrollment &amp; Transition</div>
+    <h2>Enrollment Timeline</h2>
+    <p>The bill prioritizes the most vulnerable Americans immediately, then opens opt-in windows before mandating universal enrollment in Year 3.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-phase">Day 1 — Immediate Auto-Enrollment</div>
+        <div class="tl-text">Automatic coverage for all uninsured individuals, every newborn, and adults age 55+. Zero gaps from enactment. No application required. Covers those with no coverage to disrupt, newborns from birth, and adults approaching Medicare eligibility who face high health care costs.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-phase">Years 1–2 — Employer Market Opt-In Window</div>
+        <div class="tl-text">Employer-sponsored plan participants (~160M enrollees) receive a structured voluntary opt-in window — preserving choice during the transition period. Employers must notify all employees within 90 days. Individuals who opt in receive Medicare coverage the following month.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-phase">Year 3 — Universal Mandate</div>
+        <div class="tl-text">All remaining lawful residents automatically enrolled. Medicaid and CHIP integrate into the Medicare program. Employer-sponsored health insurance plan mandates sunset and employer contributions redirect to Medicare financing. Full universal coverage achieved.</div>
+      </div>
+    </div>
+
+    <div class="transport-box">
+      <div class="tb-title">VA and IHS Unaffected</div>
+      <div class="tb-text">The Department of Veterans Affairs (VA) and Indian Health Service (IHS) are not affected by this Act and continue operating independently.</div>
+    </div>
+  </section>
+
+  <!-- ── NON-DISCRIMINATION ── -->
+  <section class="policy-section" id="nondiscrim">
+    <div class="section-eyebrow">Non-Discrimination Protections</div>
+    <h2>Equal Access, Enforced by Law</h2>
+    <p>The bill incorporates and strengthens civil rights frameworks — prohibiting discrimination at both the <strong>provider</strong> and <strong>plan-administrator</strong> level, a meaningful expansion beyond prior law.</p>
+
+    <div class="nd-item">
+      <div class="nd-icon">⚖️</div>
+      <div>
+        <div class="nd-title">ACA Section 1557 — Anti-Discrimination Baseline</div>
+        <div class="nd-text">Incorporates the existing ACA prohibition on discrimination in any federally funded health program — covering race, color, national origin, sex, age, and disability. Now applied to the expanded Medicare program. This is the established federal baseline, not a new provision.</div>
+        <div class="nd-source">Source: Medicare for America Act (2019) · ACA §1557</div>
+      </div>
+    </div>
+    <div class="nd-item">
+      <div class="nd-icon">🏥</div>
+      <div>
+        <div class="nd-title">Providers AND Health Plans Both Bound</div>
+        <div class="nd-text">Prior law often only bound the treating provider (the doctor or hospital). This bill explicitly prohibits discrimination by health plans and administrators — meaning the insurer or plan cannot deny, delay, or limit coverage on discriminatory grounds. A patient treated equitably by their physician cannot face discriminatory denials from their insurer. Both levels of the system are held accountable simultaneously.</div>
+        <div class="nd-source">Scope: Dual accountability — clinical + administrative</div>
+      </div>
+    </div>
+    <div class="nd-item">
+      <div class="nd-icon">📋</div>
+      <div>
+        <div class="nd-title">Expanded Protected Categories</div>
+        <div class="nd-text">Spells out an explicit list of characteristics one cannot be discriminated against — removing vagueness in current law. Includes race, language, pregnancy, gender identity, age, disability, and more. The Secretary may add additional categories by regulation to reflect evolving civil rights standards.</div>
+        <div class="nd-source">Effect: Removes vagueness — names specific protected categories</div>
+      </div>
+    </div>
+    <div class="nd-item">
+      <div class="nd-icon">🛡️</div>
+      <div>
+        <div class="nd-title">Robust Enforcement</div>
+        <div class="nd-text">HHS has independent authority to investigate and penalize violators. The bill allows both governmental and individual lawsuits — ensuring accountability at every level. The Attorney General and State attorneys general may also bring civil actions.</div>
+        <div class="nd-source">Mechanism: HHS authority + private right of action + governmental suits</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEASIBILITY ── -->
+  <section class="policy-section" id="feasibility">
+    <div class="section-eyebrow">Feasibility of Implementation</div>
+    <h2>Can It Be Done?</h2>
+    <p>Implementation poses real challenges but has historical precedent: Medicare launched in just 11 months in 1966, and Canada transitioned to universal coverage over a decade. Over 30 nations operate universal systems today — all achieving better outcomes at lower per-capita cost than the U.S.</p>
+
+    <div class="stat-box">
+      <div class="stat-number">30+</div>
+      <div class="stat-desc">Nations with universal coverage<br><span>All achieve better outcomes at lower per-capita cost than the U.S.</span></div>
+    </div>
+
+    <h3>Administrative Savings</h3>
+    <p>Private insurer overhead runs ~12% of revenue vs. Medicare's ~2%. The CBO projects ~$400B/year in savings from consolidation. Providers also benefit: hospital admin costs fall from 19% to ~12% of revenue; physician administrative overhead falls from 15% to ~9%; nurses spend 18.4% less time on administrative activities (CBO).</p>
+
+    <h3>Key Risks to Acknowledge</h3>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>Provider payment disruption</strong> during transition — Medicare reimburses below private rates; rural hospitals and specialists face potential revenue shortfalls.</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>IT system consolidation</strong> — health systems mid-transition from manual to electronic quality reporting face additional complexity. FHIR-based interoperability mandates would mitigate fragmentation risk.</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>Workforce dislocation</strong> — approximately 1.8M insurance industry jobs would be displaced (PERI). The bill includes provisions for workforce transition assistance.</div>
+    </div>
+
+    <div class="transport-box">
+      <div class="tb-title">Value-Based Program Continuity</div>
+      <div class="tb-text">All existing ACA and Medicare value-based programs continue operating as-is. They sunset only once the new federal quality reporting structure is fully implemented and operationalized — no abrupt disruption to existing programs.</div>
+    </div>
+  </section>
+
+  <!-- ── ACOs ── -->
+  <section class="policy-section" id="acos">
+    <div class="section-eyebrow">Accountable Care Organizations</div>
+    <h2>What Is an ACO?</h2>
+    <p>An <strong>Accountable Care Organization (ACO)</strong> is a group of doctors, hospitals, and other health care providers who voluntarily come together to give coordinated, high-quality care to a defined population of patients. ACOs are <strong>not insurance plans</strong> — patients retain full rights under Original Medicare and may see any provider that accepts Medicare, even outside the ACO.</p>
+
+    <h3>How ACOs Work</h3>
+    <p>ACOs shift incentives from fee-for-service (pay per procedure) to value-based care (pay for outcomes). Providers are accountable for both the quality and total cost of care for their attributed patient population.</p>
+
+    <div class="aco-step">
+      <div class="aco-num">1</div>
+      <div class="aco-text"><strong>Coordinate care</strong> — Providers share patient data via electronic health records to prevent duplicated services, medication errors, and unnecessary ER visits.</div>
+    </div>
+    <div class="aco-step">
+      <div class="aco-num">2</div>
+      <div class="aco-text"><strong>Meet quality benchmarks</strong> — ACOs are measured against ~30 quality metrics across patient experience, care coordination, safety, and preventive health.</div>
+    </div>
+    <div class="aco-step">
+      <div class="aco-num">3</div>
+      <div class="aco-text"><strong>Share in savings</strong> — When spending falls while quality is maintained, the ACO receives a share of those savings. Poor performance can result in financial penalties.</div>
+    </div>
+    <div class="aco-step">
+      <div class="aco-num">4</div>
+      <div class="aco-text"><strong>Address social determinants</strong> — ACOs examine housing, food security, and other factors, connecting patients with community supports to close equity gaps.</div>
+    </div>
+
+    <h3>ACOs in This Bill</h3>
+    <div class="transport-box">
+      <div class="tb-title">85% P4P Pass-Through Mandate</div>
+      <div class="tb-text">At least 85% of Pay-for-Performance payments must flow directly to individual providers — not group administrators — ensuring incentives reach the clinicians delivering care.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+      <div class="stat-box" style="flex-direction:column;align-items:flex-start;gap:4px;">
+        <div class="stat-number" style="font-size:2rem;">$470M</div>
+        <div class="stat-desc">Median CMS savings from ACOs, 2012–2015</div>
+      </div>
+      <div class="stat-box" style="flex-direction:column;align-items:flex-start;gap:4px;">
+        <div class="stat-number" style="font-size:2rem;">480</div>
+        <div class="stat-desc">Active MSSP ACOs in 2024 — record high, covering 10.8M beneficiaries</div>
+      </div>
+    </div>
+
+    <p><span class="chip red">Equity Note</span>&nbsp; ACOs serving predominantly patients of color have historically underperformed on quality benchmarks due to inequitable benchmark design — not worse care. This bill's health equity office and disparity tracking provisions directly address this gap.</p>
+    <p class="source-note">Sources: Commonwealth Fund · CMS.gov · AHA · NCBI StatPearls · CMS MSSP 2024</p>
+  </section>
+
+  <!-- ── REGIONAL ADMINISTRATION ── -->
+  <section class="policy-section" id="regional">
+    <div class="section-eyebrow">Regional Administration</div>
+    <h2>Multi-State Regions</h2>
+    <p>Quality of care is tracked through ACOs organized at both the multi-state regional and individual state level, with states accountable to a regional entity regardless of which path they choose.</p>
+
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>Tiered, Flexible Structure:</strong> Regional and state-level ACOs each have a designated director, annual health assessment, and the autonomy to collaborate or operate independently. States may join a multi-state regional ACO or operate their own state-level ACO — but all remain accountable to a regional entity.</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>System-Neutral ACOs:</strong> No ACO may be administered by or affiliated with a single healthcare system — preserving patient choice and preventing market consolidation by large health systems.</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>National Quality Floor:</strong> All ACOs report quality metrics federally, ensuring a consistent national standard with local flexibility in how care is delivered and organized. This creates natural peer benchmarking between regions — driving quality improvement through comparison.</div>
+    </div>
+
+    <h3>Why a Multi-Regional Framework?</h3>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>Prevents single point of failure</strong> — distributes administrative, political, and financial risk across regions rather than concentrating it nationally.</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>Matches how health care is actually delivered</strong> — patient populations, disease burdens, provider supply, and cost structures vary dramatically by region. Local ACOs reflect those realities.</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>Builds on existing infrastructure</strong> — Vermont's OneCare, Oregon's Coordinated Care Organizations, and others can be absorbed and expanded rather than dismantled.</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-dot">◆</div>
+      <div class="bullet-text"><strong>Drives competitive quality improvement</strong> — regional benchmarking creates visible, accountable comparisons that incentivize improvement above the national floor.</div>
+    </div>
+  </section>
+
+  <!-- ── PUBLIC OPINION ── -->
+  <section class="policy-section" id="opinion">
+    <div class="section-eyebrow">Public Opinion</div>
+    <h2>Where Does America Stand?</h2>
+    <p>Majority support exists, but drops sharply when framed as replacing private insurance. Understanding the framing gap is essential for congressional staffers briefing colleagues and constituents.</p>
+
+    <table class="opinion-table">
+      <tr><th>Group</th><th>Support</th><th>Oppose</th></tr>
+      <tr><td>All U.S. Adults</td><td><span class="support">56%</span></td><td><span class="oppose">44%</span></td></tr>
+      <tr><td>Framed as replacing private insurance</td><td><span class="oppose">38%</span></td><td><span class="oppose">62%</span></td></tr>
+      <tr><td>Democrats</td><td><span class="support">77%</span></td><td>23%</td></tr>
+      <tr><td>Republicans</td><td><span class="oppose">28%</span></td><td><span class="oppose">72%</span></td></tr>
+      <tr><td>Independents</td><td><span class="support">52%</span></td><td>48%</td></tr>
+    </table>
+    <p class="source-note">Source: Kaiser Family Foundation Health Tracking Poll, 2024</p>
+
+    <div class="pull-quote">
+      <p>"Support for M4A is highly sensitive to framing — lead with coverage gains and cost savings, not system replacement."</p>
+      <cite>— Staffer Talking Point</cite>
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-logo">The Medicare <span>Brief</span></div>
+  <div class="footer-sub">Prepared by Paige McCurdy and Ella Philander · 119th Congress · For educational use only · Not an official congressional document</div>
+  <div class="footer-sub" style="margin-top:0.5rem;">Sources: KFF 2024 · CBO · Urban Institute · PERI/UMass · Peterson-KFF · CMS NHE 2024 · ACA §1557 · Commonwealth Fund · NCBI StatPearls</div>
+</footer>
+
+</body>
+</html>
