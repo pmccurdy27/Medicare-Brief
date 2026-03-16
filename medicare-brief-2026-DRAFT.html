@@ -232,6 +232,25 @@
     .stat-number { font-size: 2rem; }
     nav a { font-size: 0.6rem; padding: 0.75rem 0.5rem; }
   }
+
+  /* DRAFT WATERMARK */
+  body::before {
+    content: 'DRAFT';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18vw;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.04);
+    pointer-events: none;
+    z-index: 9998;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    user-select: none;
+  }
+
 </style>
 </head>
 <body>
